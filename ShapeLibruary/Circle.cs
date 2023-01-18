@@ -8,17 +8,12 @@ namespace ShapeLibruary
 {
     public class Circle : AbstactShape
     { 
-      /// <summary>
-      /// 
-      /// </summary>
       /// <param name="Radius">Радиус круга(Должен быть больше нуля)</param>
-      
         public Circle(double Radius):base(Radius)
         {
            
         }
 
         public override double GetArea( ) => parameters[0] * parameters[0] *Math.PI;
-     
     }
 }

@@ -12,17 +12,15 @@ namespace TestShape
         {
             Circle circle = new Circle(1);
             Assert.NotNull(circle);
-
+         
         }
         
-
        [Test]
         public void TestCreateCircleWithException()
         {
             Assert.Throws<ArgumentException>(() => { new Circle(-4); });
 
         }
-
 
         [Test]
         public void TestGetAreaCircle()

@@ -8,7 +8,6 @@ namespace ShapeLibruary
 {
     public abstract class AbstactShape
     {
-        
         private protected List<double> parameters { get; set; }
        
         /// <summary>
@@ -17,16 +16,19 @@ namespace ShapeLibruary
         /// <returns></returns>
         public abstract double GetArea();
 
-
-        public   AbstactShape(params double[] parametrs)
+        public   AbstactShape(params double[] parameters)
         {
-            var sortedParameters = parametrs.OrderByDescending(x => x);
-            parameters = new List<double>();
-            foreach (var parameter in sortedParameters)
+            this.parameters = new List<double>();
+            foreach (var parameter in SortParameters(parameters))
             {
-                if (parameter <= 0) throw new ArgumentException("Параметры фигуры долдны быть больше нуля");
+                if (parameter <= 0) throw new ArgumentException("Параметры фигуры должны быть больше нуля");
                 this.parameters.Add(parameter);
             }
+        }
+
+        protected virtual double[] SortParameters(double[] parameters) 
+        {
+            return parameters;
         }
     }
 }
