@@ -21,6 +21,7 @@ namespace TestShape
             Assert.Throws<ArgumentException>(() => { new Triangle(4, 0, 4); });
             Assert.Throws<ArgumentException>(() => { new Triangle(4, 1, -4); });
             Assert.Throws<Exception>(() => { new Triangle(4, 6, 11); });
+            Assert.Throws<ArgumentException>(() => { new Triangle(4, 3, 4, -2); });
         }
 
         [Test]

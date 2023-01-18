@@ -25,7 +25,7 @@ namespace TestShape
         [Test]
         public void TestGetAreaCircle()
         {
-            double[] resultArea =  { 50.26, 38.48 } ;
+            double[] resultArea =  {50.26, 38.48 } ;
             const double delta = 0.02;
           
             Assert.AreEqual(new Circle(4).GetArea(), resultArea[0], delta);

@@ -26,9 +26,7 @@ namespace ShapeLibruary
             }
         }
 
-        protected virtual double[] SortParameters(double[] parameters) 
-        {
-            return parameters;
-        }
+        protected virtual double[] SortParameters(double[] parameters) => parameters;
+      
     }
 }
