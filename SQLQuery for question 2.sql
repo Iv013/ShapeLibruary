@@ -1,4 +1,4 @@
---Создадим табицы с продуктами и категориями
+--РЎРѕР·РґР°РґРёРј С‚Р°Р±РёС†С‹ СЃ РїСЂРѕРґСѓРєС‚Р°РјРё Рё РєР°С‚РµРіРѕСЂРёСЏРјРё
 create table Product(
 	[Id] int not null identity(1,1) primary key,
 	[Name] varchar(max) not null
@@ -9,22 +9,22 @@ create table Category(
 	[Name] varchar(max) not null
 )
 
---для связи многоие ко многим нужна отдельная (главная) таблица для связывания, я создал со внешними ключами.
+--РґР»СЏ СЃРІСЏР·Рё РјРЅРѕРіРѕРёРµ РєРѕ РјРЅРѕРіРёРј РЅСѓР¶РЅР° РѕС‚РґРµР»СЊРЅР°СЏ (РіР»Р°РІРЅР°СЏ) С‚Р°Р±Р»РёС†Р° РґР»СЏ СЃРІСЏР·С‹РІР°РЅРёСЏ, СЏ СЃРѕР·РґР°Р» СЃРѕ РІРЅРµС€РЅРёРјРё РєР»СЋС‡Р°РјРё.
 create table ProductCategory(
 [ProductId] int not null foreign key references Product(Id)  ,
 	[CategoryId] int not null foreign key references Category(Id),
 	primary key(ProductId, CategoryId)
 )
 
---заполняем тестовыми данными
+--Р·Р°РїРѕР»РЅСЏРµРј С‚РµСЃС‚РѕРІС‹РјРё РґР°РЅРЅС‹РјРё
 insert into Product (Name) values ('Prod 1'),( 'Prod 2'),( 'Prod 3'),( 'Prod 4') ,( 'Prod 5')
 insert into Category(Name) values ('Cat 1'), ('Cat 2'),( 'Cat 3'),( 'Cat 4')
 insert into ProductCategory(ProductId, CategoryId) values (1,1), (1,2), (2,2), (2,1), (1,3)
 
 
 
---делаем запрос с left join, чтобы отобразились тавары без категорий. 
--- Чтобы отобразить еще категории без товаров, нужно left заменить на right
+--РґРµР»Р°РµРј Р·Р°РїСЂРѕСЃ СЃ left join, С‡С‚РѕР±С‹ РѕС‚РѕР±СЂР°Р·РёР»РёСЃСЊ С‚Р°РІР°СЂС‹ Р±РµР· РєР°С‚РµРіРѕСЂРёР№. 
+-- Р§С‚РѕР±С‹ РѕС‚РѕР±СЂР°Р·РёС‚СЊ РµС‰Рµ РєР°С‚РµРіРѕСЂРёРё Р±РµР· С‚РѕРІР°СЂРѕРІ, РЅСѓР¶РЅРѕ left Р·Р°РјРµРЅРёС‚СЊ РЅР° right
 select Product.Name, Category.Name from Product
 left join ProductCategory on ProductId = Product.Id
 left join Category on CategoryId = Category.Id
